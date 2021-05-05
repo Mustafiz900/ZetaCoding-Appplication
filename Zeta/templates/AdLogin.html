@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aldrich">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Footer-Basic.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="{% static 'assets/css/Navigation-with-Search.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+</head>
+
+
+
+<body style="border-style: none;border-color: var(--blue);font-weight: normal;background: linear-gradient(45deg, var(--indigo) 24%, var(--pink));">
+    <div class="container" style="width: 438px;margin-top: 15vh;background: #ffffff;border-radius: 27px;border-width: 3px;border-color: rgb(23,232,207);box-shadow: 0px 0px 20px;">
+        <form method="post" action="/AdLogin">{% csrf_token %}
+        <div>
+            <p class="text-center" style="font-size: 30px;font-family: Acme, sans-serif;font-weight: bold;margin-bottom: 16px;"><img src="{% static 'assets/img/IMG_20210330_123157.png' %}" style="width: 80px;border-radius: 42px;margin-left: 0px;margin-right: -15px;">&nbsp; &nbsp; &nbsp; Admin Login</p>
+        </div>
+
+        {% for message in messages %}
+
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        {% endfor %}
+
+        <div class="text-left"><i class="fa fa-user" style="width: 7.4375px;height: 0px;font-size: 22px;background: #a7a6a6;color: rgb(89,90,91);margin-left: 36px;"></i><input type="text" style="background: rgb(221,220,220);margin-left: 15px; width: 312px;border-radius: 14px;border-width: 0px;border-color: rgb(221,220,220);height: 35px;" placeholder="Username" id="uname" name="uname"></div>
+        <div class="text-left" style="margin-top: 15px;"><i class="fa fa-lock" style="width: 7.4375px;height: 0px;font-size: 22px;background: #a7a6a6;color: rgb(89,90,91);margin-left: 36px;"></i><input type="password" style="background: rgb(221,220,220);width: 312px;height: 35px;margin-left: 15px;border-width: 0px;border-color: rgb(221,220,220);border-radius: 14px;" placeholder="Password" id="passwd" name="passwd"></div>
+        <div class="text-left" style="margin-top: 15px;margin-bottom: 0px;"><button class="btn btn-primary" type="submit" style="width: 312.5px;margin-left: 60px;border-radius: 14px;background: rgb(43,170,63);margin-bottom: 15px;">Login</button></div>
+        </form>
+    </div>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/bs-init.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</body>
+
+</html>

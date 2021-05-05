@@ -1,0 +1,17 @@
+#Login:hover {
+  border-color: yellow;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#btn-1:hover {
+  border: 3px solid rgb(247,225,28);
+  /*border-color: yellow;*/
+}
+
+#btn-2:hover {
+  border: 3px solid yellow;
+}
+

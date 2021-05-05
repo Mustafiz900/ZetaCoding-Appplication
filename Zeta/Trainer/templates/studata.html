@@ -1,0 +1,45 @@
+{% extends 'Trainerbasic.html' %}
+
+{% block title %}
+Trainer Dashboard
+{% endblock title %}
+
+{% load static %}
+
+{% block body %}
+<p style="margin-top: 2%; margin-left: 2%;"><a href="/Trainer/studetails">&#8592; Back</a></p>
+<div class="container">
+    <h3 class="text-center mt-5" style="margin: 20px; font-family: Aldrich, sans-serif;">Details of <b>{{studata.Stud_id.stud_name}}</b></h3>
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="table-responsive table-bordered text-center">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="table-info">
+                            <th>Student Name</th>
+                            <th>Student Course</th>
+                            <th>Domain Name</th>
+                            <th>Course Fees</th>
+                            <th>Batch Number</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                        <tr>
+                            <td>{{studata.Stud_id.stud_name}}</td>
+                            <td>{{studata.stud_course}}</td>
+                            <td>{{studata.stud_domain}}</td>
+                            <td>&#8377; {{studata.stud_fees}}</td>
+                            <td>{{studata.stud_batch}}</td>
+                        </tr>
+                  
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Table ends here -->
+
+{% endblock body %}

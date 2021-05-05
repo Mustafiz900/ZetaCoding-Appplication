@@ -1,0 +1,62 @@
+{% extends 'Trainerbasic.html' %}
+
+{% block title %}
+Trainer Dashboard
+{% endblock title %}
+
+{% load static %}
+
+{% block body %}
+ 
+<p style="margin-top: 1%; margin-left: 2%;"><a href="/Trainer/studetails">&#8592; Back</a></p>
+ <!-- Student List Table Starts here-->
+  <div class="container ml-6" >
+    <h3 class="text-center mt-5" style="margin: 20px; font-family: Aldrich, sans-serif; font-weight: bold;">Search Results</h3>
+            <!-- <h5 class="text-center" style="font-family:Acme, sans-serif;"></h5> -->
+
+
+            
+            <!-- For Notification messages
+            {% for message in messages %}
+
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <strong></strong>{{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            {% endfor %} -->
+
+            {% if studquery %}
+                
+                    <div class="table-responsive table-bordered text-center scrollable">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="table-info">
+                                    <th>ID</th>
+                                    <th>Student&nbsp;Name</th>
+                                    <th>Student Email</th>
+                                    <th>College&nbsp;Name</th>
+                                    <th>Student&nbsp;Address</th>
+                                    <th>Phone&nbsp;Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for qry in studquery %}
+                                <tr><td class="table-light">{{qry.Stud_id.stud_id}}</td>
+                                    <td><a href="{{qry.Stud_id.stud_id}}/studata/" style="text-decoration: none;" ><b>{{qry.Stud_id.stud_name}}</b></a></td>
+                                    <td>{{qry.Stud_id.stud_email}}</td>
+                                    <td>{{qry.Stud_id.stud_college}}</td>
+                                    <td>{{qry.Stud_id.stud_address}}</td>
+                                    <td>{{qry.Stud_id.stud_phone}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                
+            {% endif %} 
+</div>
+<!-- Table ends here -->
+
+{% endblock body %}

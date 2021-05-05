@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Students Details</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aldrich">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Footer-Basic.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="{% static 'assets/css/Navigation-with-Search.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+</head>
+
+
+  
+<body>
+    <!-- Body has a row which contains two columns, one column for the side bar and other for the
+    page contents.-->
+    <div class="row">
+
+        <!-- Column 1-->
+        <div class="col-12 col-md-2" style="height: 675px;">
+
+            <!-- Side bar-->
+            <div class="container" style="background: #252bba;height: 100%;">
+                <div>
+                    <p class="text-center" style="font-family: Aldrich, sans-serif;font-size: 15px;font-weight: bold;color: rgb(205,205,221);"><img src="{% static 'assets/img/IMG_20210330_123157.png' %}" style="width: 80PX;height: 80px;border-radius: 44px;margin-right: 10px;">&nbsp;</p>
+                </div>
+                <div class="text-center" style="margin-top: 30px;"><a href="/Admin" style="font-family: Acme, sans-serif;font-size: 18px;color: rgb(231,237,242);">Dashboard</a></div>
+                <div class="text-center" style="margin-top: 20px;"><a href="/Admin/student" style="font-family: Acme, sans-serif;font-size: 18px;font-weight: normal;color: rgb(231,237,242);">Students</a></div>
+                <div class="text-center" style="margin-top: 20px;"><a href="/Admin/trainer" style="font-family: Acme, sans-serif;font-size: 18px;font-weight: normal;color: rgb(236,238,241);">Trainers</a></div>
+                <div class="text-center" style="margin-top: 20px;"><a href="/Admin/referrer" style="font-family: Acme, sans-serif;font-size: 18px;font-weight: normal;color: rgb(241,243,247);">Referrers</a></div>
+            </div>
+        </div>
+
+        <!-- Column 2-->
+        <div class="col-12 col-md-9" style="height: 600px;">
+
+            <!-- Navbar Stars here -->
+            <nav class="navbar navbar-light navbar-expand-md shadow navigation-clean-search" style="box-shadow: 0px 0px;width: 1080px;background: rgb(249,250,251);border-bottom-left-radius: 30px;border-top-right-radius: 30px;">
+                <div class="container"><a class="navbar-brand" href="Admin/student" style="margin-right: 40px;font-family: Aldrich, sans-serif;">STUDENT DETAILS</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                   
+                </div>
+            </nav>
+            <!-- Navbar ends here-->
+
+
+            <!-- Student List Table Starts here-->
+            <div class="container">
+                <h3 class="text-center mt-5" style="margin: 20px; font-family: Aldrich, sans-serif;">Details of <b>{{alldetails.Stud_id.stud_name}}</b></h3>
+                <div class="card shadow">
+                    <div class="card-body">
+                        <!-- <h3>Click on student name to view their details</h3> -->
+                        <div class="table-responsive table-bordered text-center">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr class="table-info">
+                                        <th>Student Name</th>
+                                        <th>Student Course</th>
+                                        <th>Domain Name</th>
+                                        <th>Course Fees</th>
+                                        <th>Batch Number</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                
+                                    <tr>
+                                        <td>{{alldetails.Stud_id.stud_name}}</td>
+                                        <td>{{alldetails.stud_course}}</td>
+                                        <td>{{alldetails.stud_domain}}</td>
+                                        <td>&#8377; {{alldetails.stud_fees}}</td>
+                                        <td>{{alldetails.stud_batch}}</td>
+                                    </tr>
+                              
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Table ends here -->
+
+
+        </div>
+    </div>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/bs-init.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</body>
+
+</html>

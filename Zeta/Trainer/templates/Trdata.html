@@ -1,0 +1,49 @@
+{% extends 'Trainerbasic.html' %}
+
+{% block title %}
+Trainer Dashboard
+{% endblock title %}
+
+{% load static %}
+
+{% block body %}
+<p style="margin-top: 2%; margin-left: 2%;"><a href="/Trainer/Trdetails">&#8592; Back</a></p>
+
+            <!-- Trainer List Table Starts here-->
+            <div class="container">
+                <h3 class="text-center mt-5" style="margin: 20px; font-family: Aldrich, sans-serif;">Details of <b>{{Trdata.Tr_id.tr_name}}</b></h3>
+                <div class="card shadow">
+                    <div class="card-body">
+                        <!-- <h3>Click on student name to view their details</h3> -->
+                        <div class="table-responsive table-bordered text-center">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr class="table-info">
+                                        <th>Trainer&nbsp;Name</th>
+                                        <th>Task Assigned</th>
+                                        <th>Task Completed</th>
+                                        <th>Assigning Date</th>
+                                        <th>Completion Date</th>
+                                        <th>Handling&nbsp;Batch</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                
+                                    <tr>
+                                        <td>{{Trdata.Tr_id.tr_name}}</td>
+                                        <td>{{Trdata.task_assigned}}</td>
+                                        <td>{{Trdata.task_completed}}</td>
+                                        <td>{{Trdata.task_assgn_date}}</td>
+                                        <td>{{Trdata.task_complete_date}}</td>
+                                        <td>{{Trdata.tr_batch}}</td>
+                                    </tr>
+                              
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Table ends here -->
+{% endblock body %}

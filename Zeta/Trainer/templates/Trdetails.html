@@ -1,0 +1,52 @@
+{% extends 'Trainerbasic.html' %}
+
+{% block title %}
+Trainer Dashboard
+{% endblock title %}
+
+{% load static %}
+
+{% block body %}
+<p style="margin-top: 1%; margin-left: 2%;"><a href="Tdashboard">&#8592; Back</a></p>
+<div class="container ml-6">
+    <h3 class="text-center mt-0" style="margin: 10px; font-family: Aldrich, sans-serif; font-weight: bold;">TRAINERS LIST</h3>
+    <div class="card shadow">
+        <div class="card-body">
+            <form class="d-flex mb-1" method="POST" action="Trsearch" style="margin-left: 30%; margin-right: 30%;">{% csrf_token %}
+                <input class="form-control me-2 mr-1" type="search" placeholder="Trainer Search" aria-label="Search" name="trsearch">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <!-- <h5 class="text-center" style="font-family:Acme, sans-serif;"></h5> -->
+            <div class="table-responsive table-bordered text-center scrollable">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="table-info">
+                            <th>ID</th>
+                            <th>Trainer&nbsp;Name</th>
+                            <th>Trainer Email</th>
+                            <th>Task&nbsp;Assigned</th>
+                            <th>Trainer&nbsp;Address</th>
+                            <th>Phone&nbsp;Number</th>
+                            
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                     {% for profile in Trdetail %}
+                        <tr><td class="table-light">{{profile.Tr_id.tr_id}}</td>
+                            <td><a href="{{profile.Tr_id.tr_id}}/Trdata/" style="text-decoration: none;" ><b>{{profile.Tr_id.tr_name}}</b></a></td>
+                            <td>{{profile.Tr_id.tr_email}}</td>
+                            <td>{{profile.task_assigned}}</td>
+                            <td>{{profile.Tr_id.tr_address}}</td>
+                            <td>{{profile.Tr_id.tr_phone}}</td>
+                            
+                        </tr>
+                    {% endfor %} 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Table ends here -->
+{% endblock body %}

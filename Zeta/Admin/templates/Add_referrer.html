@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Add Referrer</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aldrich">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Footer-Basic.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="{% static 'assets/css/Navigation-with-Search.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+</head>
+
+
+  
+<body>
+    <!-- Body has a row which contains two columns, one column for the side bar and other for the
+    page contents.-->
+    <div class="row">
+        <!--  Side Bar starts here-->
+        <div class="col-12 col-md-2" style="height: 675px;">
+            <div class="container" style="background: #252bba;height: 100%;">
+                <div>
+                    <p class="text-center" style="font-family: Aldrich, sans-serif;font-size: 15px;font-weight: bold;color: rgb(205,205,221);"><img src="{% static 'assets/img/IMG_20210330_123157.png' %}" style="width: 80PX;height: 80px;border-radius: 44px;margin-right: 10px;">&nbsp;</p>
+                </div>
+                <div class="text-center" style="margin-top: 30px;"><a href="/Admin" style="font-family: Acme, sans-serif;font-size: 18px;color: rgb(231,237,242);">Dashboard</a></div>
+                <div class="text-center" style="margin-top: 20px;"><a href="student" style="font-family: Acme, sans-serif;font-size: 18px;font-weight: normal;color: rgb(231,237,242);">Students</a></div>
+                <div class="text-center" style="margin-top: 20px;"><a href="trainer" style="font-family: Acme, sans-serif;font-size: 18px;font-weight: normal;color: rgb(236,238,241);">Trainers</a></div>
+                <div class="text-center" style="margin-top: 20px;"><a href="referrer" style="font-family: Acme, sans-serif;font-size: 18px;font-weight: normal;color: rgb(241,243,247);">Referrers</a></div>
+            </div>
+        </div>
+        <!--  Side Bar Ends here-->
+
+
+        <!--        Main content (Navbar And the Form)     -->
+        <div class="col-12 col-md-9" style="height: 600px;">
+            <nav class="navbar navbar-light navbar-expand-md shadow navigation-clean-search" style="box-shadow: 0px 0px;width: 1080px;background: rgb(249,250,251);border-bottom-left-radius: 30px;border-top-right-radius: 30px;">
+                <div class="container"><a class="navbar-brand" href="Add_referrer" style="margin-right: 40px;font-family: Aldrich, sans-serif;"> ADD STUDENT DETAILS</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navcol-1">
+                    </div>
+                </div>
+            </nav>
+
+            <!-- For Notification messages -->
+            {% for message in messages %}
+
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <strong></strong>{{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            {% endfor %}
+
+            <!-- Form to enter referrer details -->
+            <section class="contact-clean mt-5" style="margin-left:150px;">
+                <form method="post" style="max-width: 700px;" action="Add_referrer">{% csrf_token %}
+                    <h2 class="text-center" style="font-family: Acme, sans-serif;font-size: 30px;">Enter Referrer Details</h2>
+                    <div class="form-group" style="padding-top: 0px;"><i class="fa fa-user" style="font-size: 20px;margin-top: 0px;padding-top: 0px;min-width: 0px;"></i><input class="form-control" type="text" name="Rfname" placeholder="Referrer Name" style="margin-left: 20px;margin-top: -28px;background: rgb(244,244,244);border-radius: 10px;max-width: 700px;"></div>
+                    <div class="form-group"><i class="fa fa-envelope"></i><input class="form-control" type="email" placeholder="Referrer Email" name="Rfemail" style="margin-left: 20px;background: rgb(244,244,244);border-radius: 10px;margin-top: -28px;"></div>
+                    <div class="form-group" style="padding-top: 0px;"><i class="fas fa-user-graduate" style="font-size: 19px;margin-top: 0px;padding-top: 0px;min-width: 0px;"></i><input class="form-control" type="text" name="Rf_stud_name" placeholder="Referred student Name" style="margin-left: 20px;margin-top: -28px;background: rgb(244,244,244);border-radius: 10px;max-width: 700px;"></div>
+                    <div class="form-group" style="padding-top: 0px;"><i class="fa fa-university" style="font-size: 17px;margin-top: 0px;padding-top: 0px;min-width: 0px;"></i><input class="form-control" type="text" name="Rf_stud_clg" placeholder="Student College Name" style="margin-left: 20px;margin-top: -28px;background: rgb(244,244,244);border-radius: 10px;max-width: 700px;"></div>
+                    <div class="form-group" style="padding-top: 0px;"><i class="fas fa-mobile-alt" style="font-size: 19px;margin-top: 0px;padding-top: 0px;min-width: 0px;"></i><input class="form-control" type="tel" name="Rf_stud_phone" placeholder="Student Phone Number " style="margin-left: 20px;margin-top: -28px;background: rgb(244,244,244);border-radius: 10px;max-width: 700px;"></div>
+                    <div class="form-group" style="padding-top: 0px;"><i class="fa fa-phone" style="font-size: 20px;margin-top: 0px;padding-top: 0px;min-width: 0px;"></i><input class="form-control" type="tel" style="max-width: 700px;margin-top: -28px;background: rgb(244,244,244);margin-left: 20px;border-radius: 10px;" placeholder="Referrer Phone Number" name="Rfphone"></div>
+                    <div class="form-group" style="padding-top: 0px;"><i class="fa fa-address-book" style="font-size: 19px;margin-top: 0px;padding-top: 0px;min-width: 0px;"></i><input class="form-control" type="text" style="max-width: 700px;margin-top: -28px;margin-left: 20px;background: rgb(244,244,244);border-radius: 10px;" placeholder="Referrer Address" name="Rfaddress"></div>
+                    <div class="form-group text-center"><button class="btn btn-primary" type="submit">Submit&nbsp;</button></div>
+                </form>
+            </section>
+
+
+
+
+        </div>
+    </div>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/bs-init.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</body>
+
+</html>

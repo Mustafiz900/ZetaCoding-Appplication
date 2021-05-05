@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ZetaCoding Admin</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aldrich">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Footer-Basic.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="{% static 'assets/css/Navigation-with-Search.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+   
+</head>
+
+
+  
+<body>
+    <!-- Body has a row which contains two columns, one column for the side bar and other for the
+    page contents.-->
+    <div class="row">
+        <!-- column 1 -->
+        <div class="col-12 col-md-2" style="height: 675px;">
+
+            <!-- Side bar-->
+            <div class="container" style="background: #252bba;min-height:200%;">
+                <div>
+                    <p class="text-center" style="font-family: Aldrich, sans-serif;font-size: 15px;font-weight: bold;color: rgb(205,205,221);"><img src="{% static 'assets/img/IMG_20210330_123157.png' %}" style="width: 80PX;height: 80px;border-radius: 44px;margin-right: 10px;">&nbsp;</p>
+                </div>
+                <div class="text-center" style="margin-top: 30px;"><a href="/Admin" style="font-family: Acme, sans-serif;font-size: 18px;color: rgb(231,237,242);">Dashboard</a></div>
+                <div class="text-center" style="margin-top: 20px;"><a href="student" style="font-family: Acme, sans-serif;font-size: 18px;font-weight: normal;color: rgb(231,237,242);">Students</a></div>
+                <div class="text-center" style="margin-top: 20px;"><a href="trainer" style="font-family: Acme, sans-serif;font-size: 18px;font-weight: normal;color: rgb(236,238,241);">Trainers</a></div>
+                <div class="text-center" style="margin-top: 20px;"><a href="referrer" style="font-family: Acme, sans-serif;font-size: 18px;font-weight: normal;color: rgb(241,243,247);">Referrers</a></div>
+            </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="col-12 col-md-9" style="height: 600px;">
+            <!-- Navbar starts here -->
+            <nav class="navbar navbar-light navbar-expand-md shadow navigation-clean-search" style="box-shadow: 0px 0px;width: 1080px;background: rgb(249,250,251);border-bottom-left-radius: 30px;border-top-right-radius: 30px;">
+                <div class="container"><a class="navbar-brand" href="/Admin" style="margin-right: 40px;font-family: Aldrich, sans-serif;">ADMIN DASHBOARD</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navcol-1">
+                        <!-- <form class="form-inline mr-auto" target="_self">
+                            <div class="form-group"><label for="search-field"><i class="fa fa-search" style="color: rgb(145,142,142);margin-right: 5px;"></i></label><input class="form-control search-field" type="search" id="search-field" name="search" placeholder="Search" style="background: #e7e7e7;width: 300px;border-radius: 20px;"><button class="btn btn-primary" type="submit" style="margin-left: 10px;background: rgb(135,139,137);height: 34px;width: 80px;padding-top: 3px;">Search</button></div>
+                        </form> -->
+                        <ul class="navbar-nav" style="margin-left:87%;">
+                            <li class="nav-item"><a class="nav-link " href="/AdminLogout" style="font-family: Acme, sans-serif;font-style: normal; color: darkred;"><i class="fa fa-user" style="margin-right: 5px;"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar ends here-->
+
+            <!-- For Notification messages -->
+            {% for message in messages %}
+
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <strong></strong>{{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            {% endfor %}
+            
+            <!-- For viewing the number of Students,Trainers and referrers-->
+            <div class="card-group mt-4 ml-2 mr-2">
+            <div class="card ml-5 shadow p-0 mb-5 bg-body rounded" style="width: 18rem; background-image: linear-gradient(to bottom right, rgb(156, 27, 22), rgb(241, 189, 221));">
+                <div class="card-body text-center">
+                  <h5 class="card-title text-center" style="font-family: Acme, sans-serif; font-size: 22px; color: rgb(250, 253, 205);">STUDENTS</h5>
+                  <p class="card-text text-center" style="font-size: 22px; font-weight: bold; font-family:Acme, sans-serif; color: rgb(59, 60, 61);">{{stud}}</p>
+                  <a href="student" class="btn btn-outline-primary btn-sm">View</a>
+                </div>
+            </div>
+
+            <div class="card ml-4 shadow p-0 mb-5 bg-body rounded" style="width: 18rem; background-image: linear-gradient(to bottom right, rgb(127, 14, 172), rgb(170, 248, 244));">
+                <div class="card-body text-center">
+                  <h5 class="card-title text-center" style="font-family: Acme, sans-serif; font-size: 22px; color: rgb(250, 253, 205);">TRAINERS</h5>
+                  <p class="card-text text-center" style="font-size: 22px; font-weight: bold; font-family:Acme, sans-serif; color: rgb(59, 60, 61);">{{trnr}} </p>
+                  <a href="trainer" class="btn btn-outline-primary btn-sm">View</a>
+                </div>
+            </div>
+
+            <div class="card ml-4 shadow p-0 mb-5 bg-body rounded" style="width: 18rem; background-image: linear-gradient(to bottom right, rgb(29, 97, 12), rgb(224, 248, 159));">
+                <div class="card-body text-center">
+                  <h5 class="card-title text-center" style="font-family: Acme, sans-serif; font-size: 22px; color: rgb(250, 253, 205);">REFERRERS</h5>
+                  <p class="card-text text-center" style="font-size: 22px; font-weight: bold; font-family:Acme, sans-serif; color: rgb(59, 60, 61);">{{refr}}</p>
+                  <a href="referrer" class="btn btn-outline-primary btn-sm">View</a>
+                </div>
+            </div>
+            </div>
+            
+            <!-- For viewing charts  -->
+          
+            <div id="myChart"></div>
+            
+                
+            
+
+        </div>
+    </div>
+    <script>
+       // Scripts for rendering charts:
+        var chartData = {
+            "type":"pie",
+            // "scale-x":{
+            //     "values":["Dennis"]
+            // },
+            "series":[{"values":[45]},{"values":[25]},{"values":[16]}]
+
+        }
+
+
+        zingchart.render({
+            id: 'myChart',
+            data: chartData,
+            height: '60%',
+            width: '60%',
+        });
+    </script>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/bs-init.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.0/dist/chart.min.js"></script>
+
+      
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'></script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+{% extends 'Trainerbasic.html' %}
+
+{% block title %}
+Trainer Dashboard
+{% endblock title %}
+
+{% load static %}
+
+{% block body %}
+<p style="margin-top: 2%; margin-left: 2%;"><a href="/Trainer/Trdetails">&#8592; Back</a></p>
+ <!-- Trainer List Table Starts here-->
+ <div class="container ml-5" >
+    <h3 class="text-center mt-5" style="margin: 20px; font-family: Aldrich, sans-serif; font-weight: bold;">Search Results</h3>
+            <!-- <h5 class="text-center" style="font-family:Acme, sans-serif;"></h5> -->
+
+
+            
+            <!-- For Notification messages
+            {% for message in messages %}
+
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <strong></strong>{{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            {% endfor %} -->
+
+            {% if Trquery %}
+                
+                    <div class="table-responsive table-bordered text-center ml-5"> <!-- Removed scrollable class-->
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="table-info">
+                                    <th>ID</th>
+                                    <th>Trainer&nbsp;Name</th>
+                                    <th>Trainer Email</th>
+                                    <th>Task&nbsp;Assigned</th>
+                                    <th>Trainer&nbsp;Address</th>
+                                    <th>Phone&nbsp;Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for qry in Trquery %}
+                                <tr><td class="table-light">{{qry.Tr_id.tr_id}}</td>
+                                    <td><a href="{{qry.Tr_id.tr_id}}/Trdata/" style="text-decoration: none;" ><b>{{qry.Tr_id.tr_name}}</b></a></td>
+                                    <td>{{qry.Tr_id.tr_email}}</td>
+                                    <td>{{qry.task_assigned}}</td>
+                                    <td>{{qry.Tr_id.tr_address}}</td>
+                                    <td>{{qry.Tr_id.tr_phone}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                
+            {% endif %} 
+</div>
+<!-- Table ends here -->
+
+
+{% endblock body %}

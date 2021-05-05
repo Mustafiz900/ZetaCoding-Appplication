@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ZetaCoding Referrers</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aldrich">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Footer-Basic.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="{% static 'assets/css/Navigation-with-Search.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+    <!--For making the table scrollable-->
+    <style>
+       .scrollable{
+            height: 450px;
+            overflow-y: scroll;
+       }
+    </style>
+</head>
+
+
+  
+<body>
+    <!-- Body has a row which contains two columns, one column for the side bar and other for the
+    page contents.-->
+    <div class="row">
+
+        <!-- Column 1-->
+        <div class="col-12 col-md-2" style="height: 675px;">
+
+            <!-- Side bar-->
+            <div class="container" style="background: #252bba;height: 100%;">
+                <div>
+                    <p class="text-center" style="font-family: Aldrich, sans-serif;font-size: 15px;font-weight: bold;color: rgb(205,205,221);"><img src="{% static 'assets/img/IMG_20210330_123157.png' %}" style="width: 80PX;height: 80px;border-radius: 44px;margin-right: 10px;">&nbsp;</p>
+                </div>
+                <div class="text-center" style="margin-top: 30px;"><a href="/Admin" style="font-family: Acme, sans-serif;font-size: 18px;color: rgb(231,237,242);">Dashboard</a></div>
+                <div class="text-center" style="margin-top: 20px;"><a href="student" style="font-family: Acme, sans-serif;font-size: 18px;font-weight: normal;color: rgb(231,237,242);">Students</a></div>
+                <div class="text-center" style="margin-top: 20px;"><a href="trainer" style="font-family: Acme, sans-serif;font-size: 18px;font-weight: normal;color: rgb(236,238,241);">Trainers</a></div>
+                <div class="text-center" style="margin-top: 20px;"><a href="referrer" style="font-family: Acme, sans-serif;font-size: 18px;font-weight: normal;color: rgb(241,243,247);">Referrers</a></div>
+            </div>
+        </div>
+
+        <!-- Column 2-->
+        <div class="col-12 col-md-9" style="height: 600px;">
+
+            <!-- Navbar Stars here -->
+            <nav class="navbar navbar-light navbar-expand-md shadow navigation-clean-search" style="box-shadow: 0px 0px;width: 1080px;background: rgb(249,250,251);border-bottom-left-radius: 30px;border-top-right-radius: 30px;">
+                <div class="container"><a class="navbar-brand" href="referrer" style="margin-right: 40px;font-family: Aldrich, sans-serif;">REFERRERS</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navcol-1">
+                        <form class="form-inline mr-auto" target="_self" method="POST" action="referrer_search">{% csrf_token %}
+                            <div class="form-group"><label for="search-field"><i class="fa fa-search" style="color: rgb(145,142,142);margin-right: 5px;"></i></label><input class="form-control search-field" type="search" id="search-field" name="Rfsearch" placeholder="Search Referrer Details" style="background: #e7e7e7;width: 300px;border-radius: 20px;"><button class="btn btn-primary" type="submit" style="margin-left: 10px;background: rgb(135,139,137);height: 34px;width: 80px;padding-top: 3px;">Search</button></div>
+                        </form>
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link " href="Add_referrer" style="font-family: Acme, sans-serif;font-style: normal; color: blue;"><i class="	fas fa-hands-helping" style="margin-right: 5px;"></i>Add Referrer</a></li>
+                            <li class="nav-item"><a class="nav-link " href="/AdminLogout" style="font-family: Acme, sans-serif;font-style: normal;color: darkred;"><i class="fa fa-user" style="margin-right: 5px;"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar ends here-->
+
+             <!-- For Notification messages -->
+             {% for message in messages %}
+
+             <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+             <strong></strong>{{message}}
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+             </div>
+             {% endfor %}
+
+
+            <!-- Student List Table Starts here-->
+            <div class="container ml-5" >
+                <h3 class="text-center mt-5" style="margin: 20px; font-family: Aldrich, sans-serif; font-weight: bold;">REFERRERS LIST</h3>
+                <div class="card shadow">
+                    <div class="card-body">
+                        <!-- <h5 class="text-center" style="font-family:Acme, sans-serif;"></h5> -->
+                        <div class="table-responsive table-bordered text-center scrollable">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr class="table-info">
+                                        <th>ID</th>
+                                        <th>Referrer&nbsp;Name</th>
+                                        <th>Referred Student</th>                                     
+                                        <th>Student&nbsp;College</th>
+                                        <th>Student&nbsp;Mobile_No</th>
+                                        <th>Actions</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                 {% for rfr in Rfprofiles %}
+                                    <tr><td class="table-light">{{rfr.RF_id.Rf_id}}</td>
+                                        <td><a href="{{rfr.RF_id.Rf_id}}/Rfdetails/" style="text-decoration: none;" ><b>{{rfr.RF_id.Rf_name}}</b></a></td>
+                                        <td>{{rfr.Rf_stud_name}}</td>
+                                        <td>{{rfr.Rf_stud_college}}</td>
+                                        <!-- <td>{{rfr.Tr_id.tr_address}}</td> -->
+                                        <td>{{rfr.Rf_stud_phone}}</td>
+                                        <td><a href="{{rfr.RF_id.Rf_id}}/Rfdelete/" style="text-decoration: none; color: red;" title="Delete"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{{rfr.RF_id.Rf_id}}/edit_referrer/" style="text-decoration: none; color: rgb(3, 78, 3);" title="Edit" ><i class="fa fa-edit"></i></a> 
+                                        </td>
+                                    </tr>
+                                {% endfor %} 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Table ends here -->
+
+
+        </div>
+    </div>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/bs-init.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</body>
+
+</html>
